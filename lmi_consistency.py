@@ -15,8 +15,8 @@ BATCH_SIZE = 128
 LEARNING_RATE = 1e-4
 EPOCHS_PER_STEP = 20  # Increase this for more accurate results
 DATASET_NAME = 'MNIST' # Change to 'CIFAR10' to switch
-ROWS_TO_TEST = [4, 8, 16, 24, 32] # For CIFAR10 (32 rows total)
-# ROWS_TO_TEST = [4, 8, 14, 20, 28] # For MNIST (28 rows total)
+ROWS_TO_TEST = [8, 16, 24, 32] 
+
 
 # --- 1. Data Loading ---
 def get_dataloader(name, batch_size):
@@ -109,7 +109,7 @@ def estimate_mi(loader, input_dim, img_shape, setting, t):
         # optimizer = torch.optim.Adam(net.parameters(), lr=0.0002, betas=(0.5, 0.999))
         discriminator.cuda()
         # load the discriminator
-        discriminator.load_state_dict(torch.load(f'checkpoints/infogan_pt/cont{2}dist10discriminator_199.pt'))
+        discriminator.load_state_dict(torch.load(f'checkpoints/cont{2}dist10discriminator_199.pt'))
         
     elif DATASET_NAME == 'CIFAR10':
         # pass # No encoder needed for CIFAR10 in this example
@@ -117,7 +117,6 @@ def estimate_mi(loader, input_dim, img_shape, setting, t):
         # optimizer = torch.optim.Adam(net.parameters(), lr=0.0002, betas=(0.5, 0.999))
         discriminator.cuda()
         # load the discriminator 
-        # discriminator.load_state_dict(torch.load('checkpoints/cifar_infogan/cifar_discriminator1900.pth'))
         discriminator.load_state_dict(torch.load(f'checkpoints/cifar_discriminator.pth'))
     # Adjust input dimensions based on setting
     if setting == 3: # Additivity: 2 images concatenated
