@@ -1,0 +1,17 @@
+torch
+torchvision
+numpy
+scipy
+matplotlib
+jupyter
+tqdm
+ipython
+numpy
+pandas
+matplotlib
+scipy
+torch
+torchvision
+tqdm
+PyYAML
+ipykernel
